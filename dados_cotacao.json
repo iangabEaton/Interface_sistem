@@ -1,13 +1,13 @@
 {
   "dados_peca": {
-    "CE": "",
+    "CE": "CE-16542",
     "Peça (nº dentro da CE)": "",
     "Material": "",
     "Planta": "Valinhos (2110)",
-    "Ø interno (mm)": 10.0,
-    "Ø externo (mm)": 100.0,
-    "Nº dentes": 10,
-    "Módulo (mm)": 4.0,
+    "Ø interno (mm)": null,
+    "Ø externo (mm)": null,
+    "Nº dentes": null,
+    "Módulo (mm)": null,
     "Tipo (classificação)": "",
     "Subtipo (classificação)": "",
     "Observações": ""
