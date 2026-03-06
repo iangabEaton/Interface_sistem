@@ -1,0 +1,24 @@
+{
+  "dados_peca": {
+    "CE": "",
+    "Peça (nº dentro da CE)": "",
+    "Material": "",
+    "Planta": "Valinhos (2110)",
+    "Ø interno (mm)": 10.0,
+    "Ø externo (mm)": 100.0,
+    "Nº dentes": 10,
+    "Módulo (mm)": 4.0,
+    "Tipo (classificação)": "",
+    "Subtipo (classificação)": "",
+    "Observações": ""
+  },
+  "revisoes_cotacao": {
+    "Furação": 1,
+    "Hobber": "1",
+    "Shaper": 1,
+    "Corte/Serra": 3,
+    "Facear e Centrar": 1,
+    "Torneamento externo": 1,
+    "Recalque": 1
+  }
+}

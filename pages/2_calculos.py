@@ -1,10 +1,20 @@
 # pages/2_calculos.py
 import pandas as pd
 import streamlit as st
+from utils import carregar_dados, salvar_dados
 
 st.set_page_config(page_title="Cálculos de Processos", page_icon="🧮", layout="wide")
 
 # ===== ESTILO PROFISSIONAL EATON (AZUL) =====
+dados_carregados = carregar_dados()
+if "dados_peca" in dados_carregados:
+    st.session_state["dados_peca"] = dados_carregados["dados_peca"]
+if "processos_sel" in dados_carregados:
+    st.session_state["processos_sel"] = dados_carregados["processos_sel"]
+if "detalhes_proc" in dados_carregados:
+    st.session_state["detalhes_proc"] = dados_carregados["detalhes_proc"]
+if "calculos" in dados_carregados:
+    st.session_state["calculos"] = dados_carregados["calculos"]
 st.markdown(
     """
     <style>
@@ -984,12 +994,14 @@ else:
 # ---------------------------
 # Navegação
 # ---------------------------
+# No final do arquivo 2_calculos.py, altere a navegação para:
+
 st.markdown('<div class="nav-fixed">', unsafe_allow_html=True)
 col_prev, col_next = st.columns([1, 1])
 with col_prev:
     st.page_link("pages/1_resumo.py", label="⬅ Voltar", use_container_width=True)
 with col_next:
-    st.page_link("pages/2_calculos.py", label="Próxima Etapa ➡", use_container_width=True)
+    st.page_link("pages/3_relatorio.py", label="Ver Relatório Final ➡", use_container_width=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Rodapé

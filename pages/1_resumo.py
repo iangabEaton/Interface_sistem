@@ -208,18 +208,40 @@ MULTI_PROCS = {"Hobber", "Shaper", "Shaver"}
 MULTI_OPCOES = ["x1", "x2", "x3", "x4"]
 
 # ---------------------------
-# Estado
+# ✅ INICIALIZAÇÃO CORRETA DO SESSION STATE
 # ---------------------------
 def slug(s: str) -> str:
     s = re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
     return s
 
-def _init_state():
+def init_session_state():
+    # Inicializa processos_sel COM TODAS AS CHAVES DOS GRUPOS
     if "processos_sel" not in st.session_state:
-        st.session_state["processos_sel"] = {g: set() for g in GRUPOS}
+        st.session_state["processos_sel"] = {}
+    
+    # Garante que TODOS os grupos existam no session_state
+    for grupo in GRUPOS.keys():
+        if grupo not in st.session_state["processos_sel"]:
+            st.session_state["processos_sel"][grupo] = set()
+    
+    # Inicializa detalhes_proc
     if "detalhes_proc" not in st.session_state:
         st.session_state["detalhes_proc"] = {}
+    
+    # Garante que dados_peca exista (vem da Interface.py)
+    if "dados_peca" not in st.session_state:
+        st.session_state["dados_peca"] = {}
+    
+    # Garante que calculos exista (para página 3)
+    if "calculos" not in st.session_state:
+        st.session_state["calculos"] = {}
 
+# Chama a inicialização
+init_session_state()
+
+# ---------------------------
+# Toggle Item
+# ---------------------------
 def toggle_item(grupo: str, item: str, marcado: bool):
     sel = st.session_state["processos_sel"][grupo]
     if marcado:
@@ -231,8 +253,6 @@ def toggle_item(grupo: str, item: str, marcado: bool):
         st.session_state.pop(f"sb_{slug(item)}", None)
         st.session_state.pop(f"multi_{slug(item)}", None)
     st.session_state["processos_sel"][grupo] = sel
-
-_init_state()
 
 # ---------------------------
 # Linha de processo
@@ -316,7 +336,7 @@ st.markdown(
     """
     <div class="eaton-footer">
         <p><strong>EATON</strong> | Powering Business Worldwide</p>
-        <p>© 2024 Eaton Corporation. All rights reserved.</p>
+        <p>© 2026 Eaton Corporation. All rights reserved.</p>
     </div>
     """,
     unsafe_allow_html=True,
